@@ -10,11 +10,11 @@
     <script src="main.js"></script>
 </head>
 <body>
-    
-    <h1>It works!</h1>
 
-    <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-        crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
-</body>
-</html>
+    <div class="container">
+
+      <div class="row text-center">
+        <div class="col">
+          <h1 style="font-size: 100px">ToDo<span style="font-size: 50px">List</span></h1>
+        </div>
+      </div> <hr> 
