@@ -1,7 +1,7 @@
 <?php include 'template/header.php'; ?>
 
 
-<form>
+<form action="#">
   <div class="row justify-content-center">
     <div class="col-8"> 
       <input type="text" id="todoText" class="form-control" placeholder="Insert a ToDo!" />
@@ -20,13 +20,10 @@
     <a href="#" class="btn btn-info"><<< Archive </a>
   </div>
   <div class="col-4">
-    <button type="button" class="btn btn-success">Complete!</button>
+    <button type="button" class="btn btn-success" onclick = Eprouve()>Complete!</button>
   </div>
 </div>
 
 
 <?php include 'template/footer.php';  ?>
-
-
-
 
