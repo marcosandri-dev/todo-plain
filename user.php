@@ -20,7 +20,7 @@
     <a href="#" class="btn btn-info"><<< Archive </a>
   </div>
   <div class="col-4">
-    <button type="button" class="btn btn-success" onclick = Eprouve()>Complete!</button>
+    <button type="button" class="btn btn-success" onclick = CompleteTodos()>Complete!</button>
   </div>
 </div>
 

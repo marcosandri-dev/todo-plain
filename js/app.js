@@ -1,7 +1,5 @@
 function AddTodo(todo){
 
-	var totalTodo = $(".todoItem").length;
-
 	if (todo){
 
 		var todoBlock ="<div class='row justify-content-center align-items-center todoItem'>" +
@@ -12,7 +10,7 @@ function AddTodo(todo){
 									"<p>" + todo + " </p>" +
 								"</div>" +
 								"<div class='col-2 text-center'>" +
-									"<input type='checkbox'/>" +
+									"<input type='checkbox' class='checked-todo'/>" +
 								"</div>" +
 							"</div>";
 
@@ -37,9 +35,22 @@ $("#list").on('click', '.cross', function () {
 });
 
 
-function Eprouve(){
+function CompleteTodos(){
+	
+	/* var count = 0;
+	
+	for (var i = 0; i <= $(".todoItem").length; i++){
+		if ($(".checked-todo").eq(i).val()){
+			count++;
+			//$(".todoItem")[i].remove();
+		}
+	} */
 
-	var totalTodo = $(".todoItem").length;
-	alert(totalTodo);
+	$(".todoItem > input:checked").length;
+
+	alert("Gratz! You have completed " + $("input:checked").length + " todo(s)!");
+
+	//A bit strange, but it works.
+	$(".todoItem input:checked").parent().parent().remove();
 
 }
