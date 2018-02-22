@@ -1,7 +1,8 @@
 <?php include 'template/header.php'; ?>
 
+<p class="d-none" id="userID"><?php echo($_GET["username"]); ?></p>
 
-<form action="#">
+<div>
   <div class="row justify-content-center">
     <div class="col-8"> 
       <input type="text" id="todoText" class="form-control" placeholder="Insert a ToDo!" />
@@ -11,7 +12,7 @@
     </div> 
   </div>
   <!-- <p>Debug : {{msg}}</p> -->
-</form> 
+</div> 
 
 <?php include 'template/list.php'; ?>
 
