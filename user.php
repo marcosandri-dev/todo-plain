@@ -26,10 +26,10 @@
 <?php include 'template/list.php'; ?>
 
 <div style="margin-bottom:30px; margin-top:30px" class="row justify-content-around">
-  <div class="col-3">
+  <div class="col-4 col-md-3">
     <a href="archive.php?username=<?php echo($_GET["username"]); ?>" class="btn btn-info btn-block"><<< Archive </a>
   </div>
-  <div class="col-3">
+  <div class="col-4 col-md-3">
     <button type="button" class="btn btn-success btn-block" onclick = CompleteTodos()>Complete!</button>
   </div>
 </div>
