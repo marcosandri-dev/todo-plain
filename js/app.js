@@ -70,8 +70,9 @@ $('#todoText').keypress(function (e) {
 function AddTodoInList(todo, todoID) {
 
   var todoBlock = "<div class='row justify-content-center align-items-center todoItem'>" +
+    "<div class='todoID d-none'>" + todoID + "</div>" +
     "<div class='col-1 text-right'>" +
-    "<span class='icon cross' onclick='DeleteTodo(" + todoID + ")'>&#10006</span> " +
+    "<span class='icon cross'>&#10006</span> " +
     "</div>" +
     "<div class='col-8'>" +
     "<p>" + todo + " </p>" +
@@ -102,34 +103,48 @@ function AddTodoInDB(user, todo) {
 
 
 
+//Click function for todo delete
+$(document).on('click', '.cross', function () {
 
-
-//Delete a Todo
-function DeleteTodo(ID){
+  var index = $(".cross").index(this); // Takes the position of the todo on the list
   $.ajax({
     type: 'POST',
     url: 'include/deleteTodo.php',
     async: false,
-    data: { ID: ID, user: $("#userID").text() },
+    data: { ID: $(".todoID").eq(index).text(), user: $("#userID").text() }, // Takes the ID of the todo and the username
     success: function (data) {
       ReloadTodos(); //And reloads the page after that
     }
   });
-}
+});
+
 
 function ReloadTodos(){
   $(".todoItem").remove();
   LoadTodos("all");
 }
 
+
+
 //Complete Todos
 function CompleteTodos(){
-	
-	$(".todoItem > input:checked").length;
 
-	alert("Gratz! You have completed " + $("input:checked").length + " todo(s)!");
+  alert("Gratz! You have completed " + $(".checked-todo:checked").length + " todo(s)!");
 
-	//A bit strange, but it works for now.
-	$(".todoItem input:checked").parent().parent().remove();
-
+  $(".checked-todo").each(function (i) {
+    if (this.checked) {
+      // This is pretty like the delete function; refactor?
+      $.ajax({
+        type: 'POST',
+        url: 'include/editTodo.php',
+        async: false,
+        data: { ID: $(".todoID").eq(i).text(), user: $("#userID").text() },
+        success: function (data) {
+          ReloadTodos();
+        }
+      });
+    }
+  });
+    
 }
+
