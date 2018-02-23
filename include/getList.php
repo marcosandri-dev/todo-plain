@@ -12,7 +12,7 @@
     case 'all':       $query = $mysqli->query("SELECT * FROM todotable WHERE user = '$user' AND checkin = 0");
       break;
     case 'archived': 	$query = $mysqli->query("SELECT * FROM todotable WHERE user = '$user' AND checkin = 1");
-
+      break;
   }
 
 	if(mysqli_num_rows($query) > 0){

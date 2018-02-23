@@ -29,20 +29,28 @@ function LoadTodos(type){
   } else {
     $("#noTodosP").show();
   }
+
+  //UX detail
+  if ($("#page").text() == 'archive'){
+    $("#noTodosP").hide();
+  }
 }
 //Ajax call 
 function GetTodos(user, type) {
   var dataToReturn;
-  $.ajax({
-    type: 'POST',
-    url: 'include/getList.php',
-    async: false,
-    data: { user: user, type: type },
-    dataType: 'json',
-    success: function (data) {
-      dataToReturn = data;
-    }
-  });
+  if ($("#page").text() == 'archive'){
+    type = 'archived';
+  }
+    $.ajax({
+      type: 'POST',
+      url: 'include/getList.php',
+      async: false,
+      data: { user: user, type: type },
+      dataType: 'json',
+      success: function (data) {
+        dataToReturn = data;
+      }
+    });
   return dataToReturn;
 }
 
@@ -81,6 +89,18 @@ function AddTodoInList(todo, todoID) {
     "<input type='checkbox' class='checked-todo'/>" +
     "</div>" +
     "</div>";
+  
+  if ($("#page").text() == 'archive'){
+    todoBlock = "<div class='row justify-content-center align-items-center todoItem'>" +
+      "<div class='todoID d-none'>" + todoID + "</div>" +
+      "<div class='col-1 text-right'>" +
+      "<span class='icon'>&#10004</span> " +
+      "</div>" +
+      "<div class='col-10'>" +
+      "<p>" + todo + " </p>" +
+      "</div>" +
+      "</div>";
+  }
 
   $("#list").append(todoBlock);
   $("#todoText").val("");

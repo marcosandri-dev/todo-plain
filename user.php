@@ -1,6 +1,15 @@
-<?php include 'template/header.php'; ?>
+<?php
+  $title = "List";
+  
+  if (!$_GET["username"]){
+    header("location: index.php");
+  }
+
+  include 'template/header.php';
+?>
 
 <p class="d-none" id="userID"><?php echo($_GET["username"]); ?></p>
+<p class="d-none" id="page">user</p>
 
 <div>
   <div class="row justify-content-center">
@@ -16,12 +25,12 @@
 
 <?php include 'template/list.php'; ?>
 
-<div style="margin-bottom:30px; margin-top:30px" class="row justify-content-center">
-  <div class="col-4">
-    <a href="#" class="btn btn-info"><<< Archive </a>
+<div style="margin-bottom:30px; margin-top:30px" class="row justify-content-around">
+  <div class="col-3">
+    <a href="archive.php?username=<?php echo($_GET["username"]); ?>" class="btn btn-info btn-block"><<< Archive </a>
   </div>
-  <div class="col-4">
-    <button type="button" class="btn btn-success" onclick = CompleteTodos()>Complete!</button>
+  <div class="col-3">
+    <button type="button" class="btn btn-success btn-block" onclick = CompleteTodos()>Complete!</button>
   </div>
 </div>
 
