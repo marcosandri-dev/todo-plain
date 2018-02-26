@@ -17,6 +17,7 @@ function isListAviable() {
     setTimeout(isListAviable, 50); //wait 50 ms, then try again
   }
 }
+
 //Function that loads the existing todos (if any) into the todo list
 function LoadTodos(type){
   var todos = GetTodos($("#userID").text(), type);
@@ -35,6 +36,7 @@ function LoadTodos(type){
     $("#noTodosP").hide();
   }
 }
+
 //Ajax call 
 function GetTodos(user, type) {
   var dataToReturn;
@@ -92,14 +94,14 @@ function AddTodoInList(todo, todoID) {
   
   if ($("#page").text() == 'archive'){
     todoBlock = "<div class='row justify-content-center align-items-center todoItem'>" +
-      "<div class='todoID d-none'>" + todoID + "</div>" +
-      "<div class='col-1 text-right'>" +
-      "<span class='icon'>&#10004</span> " +
-      "</div>" +
-      "<div class='col-10'>" +
-      "<p>" + todo + " </p>" +
-      "</div>" +
-      "</div>";
+    "<div class='todoID d-none'>" + todoID + "</div>" +
+    "<div class='col-1 text-right'>" +
+    "<span class='icon'>&#10004</span> " +
+    "</div>" +
+    "<div class='col-10'>" +
+    "<p>" + todo + " </p>" +
+    "</div>" +
+    "</div>";
   }
 
   $("#list").append(todoBlock);
@@ -145,26 +147,23 @@ function ReloadTodos(){
 }
 
 
-
 //Complete Todos
 function CompleteTodos(){
 
   alert("Gratz! You have completed " + $(".checked-todo:checked").length + " todo(s)!");
 
-  $(".checked-todo").each(function (i) {
+  $(".checked-todo").each(function (index) {
     if (this.checked) {
+
       // This is pretty like the delete function; refactor?
       $.ajax({
         type: 'POST',
         url: 'include/editTodo.php',
         async: false,
-        data: { ID: $(".todoID").eq(i).text(), user: $("#userID").text() },
-        success: function (data) {
-          ReloadTodos();
-        }
+        data: { ID: $(".todoID").eq(index).text(), user: $("#userID").text() },
       });
     }
   });
-    
-}
 
+  ReloadTodos();
+}

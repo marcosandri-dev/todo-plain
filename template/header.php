@@ -14,6 +14,6 @@
 
       <div class="row text-center">
         <div class="col">
-          <h1 style="font-size: 100px">ToDo<span style="font-size: 50px"><?php echo($title); ?></span></h1>
+          <h1 style="font-size: 80px; margin-top:15px">ToDo<span style="font-size: 40px"><?php echo($title); ?></span></h1>
         </div>
       </div> <hr> 
